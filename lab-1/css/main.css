@@ -112,25 +112,8 @@ input[type='password'] {
   padding-bottom: 5px;
 }
 
-.kontener h4 {
-  color: #555;
-  margin-top: 15px;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
 .kontener p {
   margin-top: 0;
   margin-bottom: 15px;
   text-align: justify;
-}
-
-.kontener ul {
-  padding-left: 20px;
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.kontener li {
-  margin-bottom: 5px;
 }

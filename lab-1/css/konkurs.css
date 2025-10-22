@@ -215,10 +215,6 @@ legend {
   margin-bottom: 0;
 }
 
-input[type='checkbox'] {
-  transform: scale(1.1);
-}
-
 .submit-button {
   background-color: var(--accent-color);
   color: white;
@@ -235,4 +231,43 @@ input[type='checkbox'] {
 .submit-button:hover {
   background-color: var(--accent-hover);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark-mode-checkbox {
+    appearance: checked;
+  }
+}
+
+.theme-icon.moon {
+  display: inline;
+}
+.theme-icon.sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-toggle .theme-icon.moon {
+    display: none;
+  }
+  .theme-toggle .theme-icon.sun {
+    display: inline;
+  }
+}
+
+.dark-mode-checkbox:checked ~ .theme-toggle .theme-icon.moon {
+  display: none;
+}
+
+.dark-mode-checkbox:checked ~ .theme-toggle .theme-icon.sun {
+  display: inline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark-mode-checkbox:not(:checked) ~ .theme-toggle .theme-icon.moon {
+    display: inline;
+  }
+  .dark-mode-checkbox:not(:checked) ~ .theme-toggle .theme-icon.sun {
+    display: none;
+  }
 }
