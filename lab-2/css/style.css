@@ -17,3 +17,31 @@ a {
 a:hover {
   text-decoration: underline; /* podkreślenie przy najechaniu */
 }
+
+.navigation {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.navigation ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navigation-button a {
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigation-button a:hover {
+  color: #333;
+  background-color: #eee;
+  border-color: #999;
+  text-decoration: none;
+}
