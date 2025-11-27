@@ -1,19 +1,229 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
+:root {
+  --bg-color: #f4f4f4;
+  --text-main: #333;
+  --text-white: #fff;
+  
+  --theme-color: #ffc107;
+  --image-url: url('../images/polo_y.png'); 
 }
+
+body:has(input[value="blue"]:checked) {
+  --theme-color: #0d6efd;
+  --image-url: url('../images/polo_b.png');
+}
+
+body:has(input[value="red"]:checked) {
+  --theme-color: #d32f2f;
+  --image-url: url('../images/polo_r.png');
+}
+
+body:has(input[value="green"]:checked) {
+  --theme-color: #2e7d32;
+  --image-url: url('../images/polo_g.png');
+}
+
+body:has(input[value="yellow"]:checked) {
+  --theme-color: #ffc107;
+  --image-url: url('../images/polo_y.png');
+}
+
+html {
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
-  margin: 1rem;
-  padding: 0;
+  margin: 0;
+  padding: 2rem 1rem;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  transition: background-color 0.3s ease; 
 }
 
 a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
+  color: #0066cc;
+  text-decoration: none;
   font-size: 1.4rem;
 }
+
 a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+  text-decoration: underline;
+}
+
+.card {
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px; 
+}
+
+.product-image {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1; 
+  
+  background-image: var(--image-url);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  
+  border: 2px solid var(--theme-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  
+  transition: border-color 0.3s ease, background-image 0.3s ease;
+}
+
+.product-details {
+  width: 300px;
+  max-width: 100%; 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+.badge {
+  background-color: var(--theme-color);
+  color: var(--text-white);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.description {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.selection-group {
+  margin-top: 0.5rem;
+}
+
+.label-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--text-main);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-option {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+input[name="color"]:checked + .color-option {
+  outline: 2px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+.bg-blue { background-color: #0d6efd; }
+.bg-red { background-color: #d32f2f; }
+.bg-green { background-color: #2e7d32; }
+.bg-yellow { background-color: #ffc107; }
+
+.size-option {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-main);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-main);
+  background-color: #fff;
+  transition: background-color 0.2s, transform 0.2s ease;
+}
+
+.size-option:hover {
+  transform: scale(1.1);
+}
+
+input[name="size"]:checked + .size-option {
+  background-color: var(--theme-color);
+  color: var(--text-white);
+  border-color: var(--theme-color);
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-main);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-cart {
+  background-color: var(--theme-color);
+  color: var(--text-white);
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cart:hover {
+  filter: brightness(0.9);
+  transform: scale(1.02);
 }
