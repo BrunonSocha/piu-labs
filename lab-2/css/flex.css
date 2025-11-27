@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #d4a373;
+  background-color: #e9edc9;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.item {
+  padding: 20px;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+body:has(input[value="blue"]:checked) .item {
+  background-color: #0000cd;
+}
+
+@media (min-width: 1025px) {
+  body:has(input[value="blue"]:checked) .container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  body:has(input[value="blue"]:checked) .item {
+    flex: 0 0 30%; 
+  }
+}
+
+@media (max-width: 1024px) {
+  body:has(input[value="blue"]:checked) .container {
+    flex-direction: column;
+  }
+  body:has(input[value="blue"]:checked) .item {
+    width: 100%;
+  }
+}
+
+body:has(input[value="red"]:checked) .item {
+  background-color: #d00000;
+}
+
+body:has(input[value="red"]:checked) .container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+body:has(input[value="red"]:checked) .item:nth-child(2) { order: 1; }
+body:has(input[value="red"]:checked) .item:nth-child(3) { order: 2; }
+body:has(input[value="red"]:checked) .item:nth-child(1) { order: 3; }
+body:has(input[value="red"]:checked) .item:nth-child(4) { order: 4; }
+body:has(input[value="red"]:checked) .item:nth-child(5) { order: 5; }
+
+body:has(input[value="red"]:checked) .item:nth-child(1) {
+  font-weight: bold;
+  flex-direction: column;
+}
+body:has(input[value="red"]:checked) .item:nth-child(1)::after {
+  content: " (Jestem większy i na środku!)";
+  font-size: 80%;
+  font-weight: normal;
+  white-space: pre;
+}
+
+@media (min-width: 1025px) {
+  body:has(input[value="red"]:checked) .item:not(:nth-child(1)) {
+    flex: 1; 
+  }
+  body:has(input[value="red"]:checked) .item:nth-child(1) {
+    flex: 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  body:has(input[value="red"]:checked) .item:not(:nth-child(1)) {
+    flex: 0 0 calc(50% - 5px); 
+  }
+  body:has(input[value="red"]:checked) .item:nth-child(1) {
+    flex: 0 0 100%; 
+  }
+}
+
+body:has(input[value="green"]:checked) .item {
+  background-color: #006400;
+}
+
+body:has(input[value="green"]:checked) .item:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+body:has(input[value="green"]:checked) .item:nth-child(1)::before,
+body:has(input[value="green"]:checked) .item:nth-child(1)::after {
+  content: "😀";
+  font-size: 2em;
+  line-height: 1; 
+}
+
+@media (min-width: 1025px) {
+  body:has(input[value="green"]:checked) .container {
+    flex-direction: row;
+  }
+  body:has(input[value="green"]:checked) .item:nth-child(1) { flex: 5; }
+  body:has(input[value="green"]:checked) .item:nth-child(2) { flex: 4; }
+  body:has(input[value="green"]:checked) .item:nth-child(3) { flex: 3; }
+  body:has(input[value="green"]:checked) .item:nth-child(4) { flex: 2; }
+  body:has(input[value="green"]:checked) .item:nth-child(5) { flex: 1; }
+}
+
+@media (max-width: 1024px) {
+  body:has(input[value="green"]:checked) .container {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+  body:has(input[value="green"]:checked) .item:nth-child(5) { width: 20%; }
+  body:has(input[value="green"]:checked) .item:nth-child(4) { width: 40%; }
+  body:has(input[value="green"]:checked) .item:nth-child(3) { width: 60%; }
+  body:has(input[value="green"]:checked) .item:nth-child(2) { width: 80%; }
+  body:has(input[value="green"]:checked) .item:nth-child(1) { width: 100%; }
+}
