@@ -1,19 +1,224 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
-}
-body {
-  margin: 1rem;
-  padding: 0;
+:root {
+  --bg-color: #fff;
+  --text-main: #333;
+  --text-white: #fff;
+  --theme-color: #ffc107;
+  --surface: #fff;
+  --muted: #666;
+  --border: #e3e3e3;
+  --radius: 0;
+  --shadow: none;
 }
 
-a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
-  font-size: 1.4rem;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-header,
+main {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.title-stack h1 {
+  margin: 0.2rem 0 0;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: none;
+  font-size: 1rem;
+  letter-spacing: normal;
+  color: var(--text-main);
+}
+
+.back-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0;
+  background: none;
+  transition: none;
+}
+
+.back-link:hover {
+  transform: none;
+  box-shadow: none;
+  background: none;
+}
+
+.hint {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.column {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 300px;
+}
+
+.column-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.column-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.count {
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0;
+  background: rgba(255, 193, 7, 0.12);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+.column-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  border: none;
+  border-radius: 0;
+  padding: 0.45rem 0.75rem;
+  background: rgba(255, 193, 7, 0.15);
+  color: #7a5600;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.action-btn:hover {
+  background: rgba(255, 193, 7, 0.25);
+  transform: none;
+  box-shadow: none;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.card {
+  border-radius: 0;
+  padding: 0.75rem 0.75rem 0.65rem;
+  box-shadow: none;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.card-title {
+  outline: none;
+  font-weight: 600;
+  line-height: 1.4;
+  min-height: 1.2rem;
+}
+
+.icon-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 100ms ease;
+}
+
+.icon-btn:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.icon-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+[contenteditable="true"] {
+  cursor: text;
+}
+
+[contenteditable="true"]:focus {
+  outline: 2px solid rgba(255, 193, 7, 0.55);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1.25rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-link {
+    align-self: flex-end;
+  }
 }
